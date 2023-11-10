@@ -77,3 +77,35 @@ export const FEATURED_PRODUCTS = [
       id:11
     },
   ];
+
+
+  export const FEATURED_CATEGORIES = [
+    {id: 1, image: "./images/hero.png", cat: "Christmas"},
+    {id: 2, image: "./images/hero.png", cat: "Christmas"},
+    {id: 3, image: "./images/hero.png", cat: "Christmas"},
+    {id: 4, image: "./images/hero.png", cat: "Christmas"},
+    {id: 5, image: "./images/hero.png", cat: "Christmas"},
+    {id: 6, image: "./images/hero.png", cat: "Christmas"},
+    {id: 7, image: "./images/hero.png", cat: "Christmas"},
+    {id: 8, image: "./images/hero.png", cat: "Christmas"},
+    {id: 9, image: "./images/hero.png", cat: "Christmas"},
+    {id: 10, image: "./images/hero.png", cat: "Christmas"},
+    {id: 11, image: "./images/hero.png", cat: "Christmas"},
+    {id: 12, image: "./images/hero.png", cat: "Christmas"},
+    {id: 13, image: "./images/hero.png", cat: "Christmas"},
+    {id: 14, image: "./images/hero.png", cat: "Christmas"},
+    {id: 15, image: "./images/hero.png", cat: "Christmas"},
+    {id: 16, image: "./images/hero.png", cat: "Christmas"},
+    {id: 17, image: "./images/hero.png", cat: "Christmas"},
+    {id: 18, image: "./images/hero.png", cat: "Christmas"},
+    {id: 19, image: "./images/hero.png", cat: "Christmas"},
+  ]
+
+
+  export const FOOTER_LIST = [
+    {id:1, title: "About Us", list: ["About East", "Career", "News & Blogs", "East Brands", "Investors"]},
+    {id:2, title: "About Us", list: ["About East", "Career", "News & Blogs", "East Brands", "Investors"]},
+    {id:3, title: "About Us", list: ["About East", "Career", "News & Blogs", "East Brands", "Investors"]},
+    {id:4, title: "About Us", list: ["About East", "Career", "News & Blogs", "East Brands", "Investors"]},
+    
+  ]

@@ -12,7 +12,7 @@ const HeroCategory = () => {
         
       </div>
       <div className="basis-1/3   flex flex-col md:justify-center gap-5 md:gap-4 p-5 md:p-8 order-2 md:order-1 bg-red-50  h-full w-full">
-        <h2 className="text-3xl md:text-4xl lg:text-6xl text-red-700 font-bold leading-5 italic tracking-tighter">
+        <h2 className="text-3xl md:text-4xl lg:text-6xl text-red-700 font-bold leading-5  tracking-tighter">
           Eat Fresh, Stay Healthy
         </h2>
         <h3 className="text-base lg:text-xl leading-4 tracking-tighter px-1  max-w-[70%] md:max-w-full">

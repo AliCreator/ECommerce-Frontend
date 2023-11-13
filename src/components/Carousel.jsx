@@ -36,7 +36,7 @@ const Carousel = ({ children, product = false }) => {
   };
 
   return (
-    <div className="relative overflow-hidden w-[25rem] md:w-[48rem] lg:w-[64rem] xl:w-[84rem] max-w-5xl">
+    <div className="relative overflow-hidden w-[25rem] md:w-[48rem] lg:w-full  max-w-6xl">
       <div
         className="flex transition-transform duration-500 items-center gap-3"
         ref={carouselRef}
@@ -46,14 +46,13 @@ const Carousel = ({ children, product = false }) => {
       <button
          onClick={() => handleClick("left")}
          className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-red-700 text-white rounded-full p-2 shadow-lg"
-         style={product ? {left: "0rem"} : {left: "1rem"}} 
+        //  style={product ? {left: "0rem"} : {left: "1rem"}} 
       >
         <AiOutlineLeft className="text-xl"/>
       </button>
       <button
         onClick={() => handleClick("right")}
         className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-red-700 text-white cursor-pointer rounded-full p-2 shadow-lg"
-        style={{ right: '1.5rem' }} 
       >
         <AiOutlineRight className="text-xl"/>
       </button>

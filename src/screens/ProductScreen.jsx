@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { IoMdCheckmark } from "react-icons/io";
 import Popularity from "../components/product/Popularity";
 import ImageSlider from "../components/product/ImageSlider";
@@ -171,6 +171,7 @@ const ProductScreen = () => {
           </div>
         </div>
       </div>
+    
     </section>
   );
 };

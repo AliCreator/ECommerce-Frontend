@@ -9,7 +9,7 @@ import CallToAction from '../components/home/CallToAction'
 
 const HomeScreen = () => {
   return (
-    <div className='flex flex-col overflow-hidden'>
+    <section className='flex flex-col overflow-hidden'>
       <HeroCategory />
       <Paragraph text="Most trusted name in the market! East Market And Restaurant" />
       <Featured />
@@ -19,7 +19,7 @@ const HomeScreen = () => {
       <Paragraph text="Halal and Fresh. The combination to health and happiness" />
       <FeaturedCategories />
       <CallToAction />
-    </div>
+    </section>
   )
 }
 

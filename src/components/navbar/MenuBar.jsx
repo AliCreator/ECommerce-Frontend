@@ -12,6 +12,8 @@ import {
 } from "react-icons/ai";
 import MenuItem from "./MenuItem";
 import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
+import SmallSizeCatCard from "./SmallSizeCatCard";
 
 const MENU_ITEMS = [
   {
@@ -39,7 +41,7 @@ const MENU_ITEMS = [
 const MenuBar = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [dropDownStyle, setDropDownStyle] = useState({});
- 
+
   const [showMenu, setShowMenu] = useState(false);
   const searchRef = useRef(null);
 
@@ -57,7 +59,9 @@ const MenuBar = () => {
   };
 
   return (
-    <section className={` max-w-[1560px] w-full m-auto flex justify-center bg-white text-slate-950 py-4 z-[100]`}>
+    <section
+      className={` max-w-[1560px] w-full m-auto flex justify-center bg-white text-slate-950 py-4 z-[100]`}
+    >
       <div className="grid grid-cols-12 md:flex md:items-center md:justify-between gap-4 md:gap-16  px-8 py-2 w-full ">
         <div className="col-span-2 order-1 md:order-2">
           <IoMdMenu
@@ -89,70 +93,15 @@ const MenuBar = () => {
                   </span>
                 </div>
                 <div className="flex items-center justify-start gap-4 flex-wrap py-4">
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
-                  <div className="w-24 h-24 flex flex-col items-center justify-start">
-                    <img
-                      src="./images/vegetable.png"
-                      alt="vegetable"
-                      className="w-16 h-16 rounded-full"
-                    />
-                    <p className="font-semibold">Vegetables</p>
-                  </div>
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
+                  <SmallSizeCatCard />
                 </div>
               </div>
               <div className="flex flex-col border-b border-slate-950 py-2">
@@ -228,20 +177,22 @@ const MenuBar = () => {
           )}
         </div>
         <div className="col-span-6 order-2 md:order-1 flex justify-center">
-          <FcShop className="text-2xl" />
+          <Link to="/">
+            <FcShop className="text-2xl" />
+          </Link>
         </div>
 
         <div className="col-span-4 order-3 md:order-4 flex items-center justify-center gap-6">
-          <div className="flex items-center gap-2">
-            <AiOutlineUser className="text-2xl" />
+          <Link to="/login" className="block flex items-center gap-2">
+            <AiOutlineUser className="text-2xl  hover:bg-gray-100 transition-all duration-500 hover:rounded-md" />
             <span className="hidden">Sign in</span>
-          </div>
-          <div className="relative">
+          </Link>
+          <Link to="/cart" className="relative  hover:bg-gray-100 transition-all duration-500 hover:rounded-md">
             <AiOutlineShoppingCart className="text-2xl" />
             <span className="absolute left-4 top-[-10px] w-4 h-4 rounded-full bg-red-700 text-white text-xs flex items-center justify-center">
               1
             </span>
-          </div>
+          </Link>
         </div>
         <div
           className="col-span-12  md:order-3 md:flex-grow flex items-center gap-4  px-2 bg-gray-100"
@@ -257,13 +208,13 @@ const MenuBar = () => {
           />
         </div>
 
-        {isSearching && (<>
-          <SearchBar
-            setIsSearching={setIsSearching}
-            dropDownStyle={dropDownStyle}
-            isSearching={isSearching}
-          />
-
+        {isSearching && (
+          <>
+            <SearchBar
+              setIsSearching={setIsSearching}
+              dropDownStyle={dropDownStyle}
+              isSearching={isSearching}
+            />
           </>
         )}
       </div>

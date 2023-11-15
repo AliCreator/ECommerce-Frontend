@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  AiOutlineDown,
   AiOutlineFacebook,
   AiOutlineInstagram,
   AiOutlineTwitter,
-  AiOutlineUp,
   AiOutlineYoutube,
 } from "react-icons/ai";
 import { FOOTER_LIST } from "../../data";
@@ -12,7 +10,7 @@ import FooterList from "./FooterList";
 
 const Footer = () => {
   return (
-    <div className="">
+    <div className="dark:bg-slate-950 dark:text-white">
       <div className=" flex flex-col gap-4 md:flex-row md:justify-between md:items-center md:px-24 p-4 ">
         <div className="flex flex-col gap-4">
           {FOOTER_LIST.map((list) => (
@@ -23,7 +21,7 @@ const Footer = () => {
           <div className="hidden md:flex items-center justify-between text-xl font-bold w-full">
             <div className="flex flex-col gap-4">
               <h2 className="md:text-2xl">{list.title}</h2>
-              <ul className="flex flex-col gap-4 md:text-sm md:text-gray-600">
+              <ul className="flex flex-col gap-4 md:text-sm md:text-gray-600 dark:text-white">
                 {list.list.map((l, i) => (
                   <li key={i}>{l}</li>
                 ))}

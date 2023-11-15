@@ -2,11 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import DropdownPortal from "./DropdownPortal";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setMenuOpen } from "../../slices/preferenceSlice";
 
 const MenuItem = ({ item }) => {
   const [isDropdown, setIsDropdown] = useState(false);
   const [dropDownStyle, setDropDownStyle] = useState({});
   const ref = useRef(null);
+  const dispatch = useDispatch()
 
   const handleClickMenu = (e) => {
     if (isDropdown) {
@@ -20,6 +23,7 @@ const MenuItem = ({ item }) => {
         top: `${rect.bottom + window.scrollY}px`,
         left: `${rect.left + window.scrollX}px`,
       });
+      dispatch(setMenuOpen(true))
       setIsDropdown(true);
     }
   };
@@ -27,13 +31,14 @@ const MenuItem = ({ item }) => {
   useEffect(() => {
     const handleClick = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {
+        dispatch(setMenuOpen(false))
         setIsDropdown(false);
       }
     };
 
     document.addEventListener("click", handleClick, true);
     return () => document.removeEventListener("click", handleClick, true);
-  }, []);
+  }, [dispatch]);
 
   const { title, subCategories } = item;
   return (

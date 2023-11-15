@@ -14,6 +14,11 @@ import MenuItem from "./MenuItem";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import SmallSizeCatCard from "./SmallSizeCatCard";
+import { useDispatch, useSelector } from "react-redux";
+import { setMenuOpen, setTheme } from "../../slices/preferenceSlice";
+import { FaMoon } from "react-icons/fa";
+import { LuSunMoon } from "react-icons/lu";
+
 
 const MENU_ITEMS = [
   {
@@ -42,9 +47,14 @@ const MenuBar = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [dropDownStyle, setDropDownStyle] = useState({});
 
+
   const [showMenu, setShowMenu] = useState(false);
   const searchRef = useRef(null);
+  const dispatch = useDispatch();
+  const {isDark} = useSelector(state => state.preferences)
 
+
+  
   const handleSearchClick = (e) => {
     if (searchRef.current) {
       const rect = searchRef.current.getBoundingClientRect();
@@ -58,9 +68,11 @@ const MenuBar = () => {
     }
   };
 
+
+
   return (
     <section
-      className={` max-w-[1560px] w-full m-auto flex justify-center bg-white text-slate-950 py-4 z-[100]`}
+      className={` max-w-[1560px] w-full m-auto flex justify-center bg-white dark:bg-gray-950 dark:text-white text-slate-950 py-4 z-99`}
     >
       <div className="grid grid-cols-12 md:flex md:items-center md:justify-between gap-4 md:gap-16  px-8 py-2 w-full ">
         <div className="col-span-2 order-1 md:order-2">
@@ -75,9 +87,9 @@ const MenuBar = () => {
           </ul>{" "}
           {showMenu && (
             <div
-              className={`absolute w-full min-h-screen top-0 left-0 transform ${
+              className={`absolute w-full min-h-screen h-[5200px] top-0 left-0 transform ${
                 showMenu ? "translate-x-0" : "-translate-x-full"
-              } transition-all duration-500 ease-in-out bg-white z-50 px-6 py-8 shadow-2xl`}
+              } transition-all duration-500 ease-in-out bg-white z-50 px-6 py-8 shadow-2xl dark:bg-slate-950`}
             >
               <div className="flex items-center justify-between border-b-2 border-slate-950 py-2">
                 <h2 className="text-xl font-bold">Menu</h2>
@@ -113,19 +125,19 @@ const MenuBar = () => {
                 </div>
                 <div className="flex items-center gap-4 py-4">
                   <div className="flex flex-col">
-                    <span className="w-24 h-24 bg-gray-100 rounded-full p-2 flex items-center justify-center">
+                    <span className="w-24 h-24 bg-gray-100 dark:bg-slate-950 rounded-full p-2 flex items-center justify-center">
                       <AiOutlineShopping className="text-6xl" />
                     </span>
                     <p className="text-center font-bold">Top Deals</p>
                   </div>
                   <div className="flex flex-col">
-                    <span className="w-24 h-24 bg-gray-100 rounded-full p-2 flex items-center justify-center">
+                    <span className="w-24 h-24 bg-gray-100 dark:bg-slate-950 rounded-full p-2 flex items-center justify-center">
                       <AiOutlineDollar className="text-6xl" />
                     </span>
                     <p className="text-center font-bold">Top Deals</p>
                   </div>
                   <div className="flex flex-col">
-                    <span className="w-24 h-24 bg-gray-100 rounded-full p-2 flex items-center justify-center">
+                    <span className="w-24 h-24 bg-gray-100 dark:bg-slate-950 rounded-full p-2 flex items-center justify-center">
                       <AiOutlineShopping className="text-6xl" />
                     </span>
                     <p className="text-center font-bold">Clearance</p>
@@ -183,19 +195,23 @@ const MenuBar = () => {
         </div>
 
         <div className="col-span-4 order-3 md:order-4 flex items-center justify-center gap-6">
-          <Link to="/login" className="block flex items-center gap-2">
+          <Link to="/login" className="flex items-center gap-2">
             <AiOutlineUser className="text-2xl  hover:bg-gray-100 transition-all duration-500 hover:rounded-md" />
             <span className="hidden">Sign in</span>
           </Link>
-          <Link to="/cart" className="relative  hover:bg-gray-100 transition-all duration-500 hover:rounded-md">
+          <Link
+            to="/cart"
+            className="relative  hover:bg-gray-100 transition-all duration-500 hover:rounded-md"
+          >
             <AiOutlineShoppingCart className="text-2xl" />
             <span className="absolute left-4 top-[-10px] w-4 h-4 rounded-full bg-red-700 text-white text-xs flex items-center justify-center">
               1
             </span>
           </Link>
+          <button className="px-3 py-2 bg-gray-100  rounded-md text-slate-950  hover:bg-gray-300 transition-all duration-500" onClick={() => dispatch(setTheme(!isDark))}>{isDark ? <LuSunMoon /> :<FaMoon />}</button>
         </div>
         <div
-          className="col-span-12  md:order-3 md:flex-grow flex items-center gap-4  px-2 bg-gray-100"
+          className="col-span-12  md:order-3 md:flex-grow flex items-center gap-4  px-2 bg-gray-100 dark:bg-gray-700 dark:text-white"
           ref={searchRef}
           onClick={handleSearchClick}
         >
@@ -204,7 +220,7 @@ const MenuBar = () => {
           <input
             type="text"
             placeholder="Search here"
-            className="w-full  outline-none px-4 py-2 bg-gray-100 relative"
+            className="w-full  outline-none px-4 py-2 bg-gray-100 relative dark:bg-gray-700 dark:text-white"
           />
         </div>
 

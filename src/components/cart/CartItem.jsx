@@ -25,7 +25,7 @@ const CartItem = () => {
             <div className="flex items-center gap-3">
               <div className="border border-slate-400 rounded-md px-2 py-1">
                 <label htmlFor="qty">Qty</label>
-                <select name="qty" id="qty">
+                <select name="qty" id="qty" className="dark:bg-slate-950 outline-none">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

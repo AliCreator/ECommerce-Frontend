@@ -1,5 +1,5 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoMdCheckmark } from "react-icons/io";
 import Popularity from "../components/product/Popularity";
 import ImageSlider from "../components/product/ImageSlider";
@@ -7,6 +7,10 @@ import ProductDetails from "../components/product/ProductDetails";
 import StarPercentage from "../components/product/StarPercentage";
 import SimilarItem from "../components/product/SilimarItem";
 import ProductReview from "../components/product/ProductReview";
+import AddToCartPopup from "../components/cart/AddToCartPopup";
+import { AiOutlineCheck } from "react-icons/ai";
+import { HiMiniShoppingBag } from "react-icons/hi2";
+import AddedProduct from "../components/cart/AddedProduct";
 
 const IMAGES = [
   "https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png",
@@ -42,7 +46,7 @@ const ProductScreen = () => {
             <select
               name="amount"
               id="amount"
-              className="min-w-[4rem] px-2 py-1 bg-slate-200 rounded-sm cursor-pointer outline-none"
+              className="min-w-[4rem] px-2 py-1 bg-slate-200 rounded-sm cursor-pointer outline-none dark:bg-gray-600"
             >
               <option value="1">1</option>
               <option value="2">2</option>
@@ -50,19 +54,58 @@ const ProductScreen = () => {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button className="px-6 py-2 bg-red-700 text-white font-bold rounded-md cursor-pointer">
-              Add to cart
-            </button>
+            <AddToCartPopup>
+              <AddToCartPopup.Open opens="order">
+                <button className="px-6 py-2 bg-red-700 text-white font-bold rounded-md cursor-pointer">
+                  Add to cart
+                </button>
+              </AddToCartPopup.Open>
+              <AddToCartPopup.Window name="order">
+                <div className="flex flex-col gap-3 p-1">
+                  <div className="flex items-center gap-4 border-b py-2 border-b-slate-300">
+                    <AiOutlineCheck className="text-3xl text-green-700" />
+                    <h2 className="text-xl font-bold">Added to cart</h2>
+                  </div>
+                  <div className="flex items-center gap-2 border-b border-slate-300 py-2">
+                    <HiMiniShoppingBag className="text-4xl text-red-700" />
+                    <div className="flex flex-col gap-0">
+                      <h3 className="text-xl font-semibold">Order pickup</h3>
+                      <p className="text-gray-400 dark:text-black">
+                        East Market{" "}
+                        <span className="text-green-700 italic">
+                          Ready within 2 hours
+                        </span>{" "}
+                        for pickup inside the store
+                      </p>
+                    </div>
+                  </div>
+                  <AddedProduct />
+                  <AddedProduct />
+                  <AddedProduct />
+                  <AddedProduct />
+                  <div className="flex flex-col gap-2">
+                    <button className="px-4 py-1 bg-red-700 text-white rounded-md cursor-pointer hover:bg-red-800 transition-all duration-500">
+                      Continue shopping
+                    </button>
+                    <button className="px-4 py-1 bg-white text-black outline-none border border-slate-300 hover:bg-slate-100 transition-all duration-500 rounded-md cursor-pointer">
+                      View cart & checkout
+                    </button>
+                  </div>
+                </div>
+              </AddToCartPopup.Window>
+            </AddToCartPopup>
           </div>
         </div>
       </div>
       <div className="order-2 md:order-1">
         <ImageSlider images={IMAGES} />
       </div>
-      <div className="order-3 w-full flex flex-col gap-3 bg-gray-100 py-2 px-3">
-        <h2 className="text-xl font-bold text-center">About this item</h2>
-        <div className="flex flex-col gap-2 bg-white px-2 py-3 rounded-sm">
-          <div className="flex flex-col gap-3">
+      <div className="order-3 w-full flex flex-col gap-3 bg-gray-100 dark:bg-slate-300 py-2 px-3">
+        <h2 className="text-xl font-bold text-center dark:text-black">
+          About this item
+        </h2>
+        <div className="flex flex-col gap-2 bg-white dark:bg-slate-300 px-2 py-3 rounded-sm">
+          <div className="flex flex-col gap-3 dark:text-black dark:bg-slate-300">
             <ProductDetails />
             <ProductDetails />
             <ProductDetails />
@@ -130,13 +173,13 @@ const ProductScreen = () => {
               <button className="self-center px-4 py-2 text-xl bg-red-700 text-white rounded-md">
                 Write a review
               </button>
-              <div className="self-center lg:min-w-[40rem] flex flex-col lg:flex-row lg:gap-12 gap-4 items-center bg-gray-200 px-3 py-2 rounded-sm">
+              <div className="self-center lg:min-w-[40rem] flex flex-col lg:flex-row lg:gap-12 gap-4 items-center bg-gray-200 dark:bg-gray-600 px-3 py-2 rounded-sm">
                 <div className="px-4 py-2 border lg:flex lg:items-center lg:justify-between lg:min-w-[22rem] border-slate-50 rounded-md cursor-pointer">
                   <label htmlFor="sort">Sort By </label>
                   <select
                     name="sort"
                     id="sort"
-                    className="outline-none rounded-sm lg:w-[75%]"
+                    className="outline-none rounded-sm lg:w-[75%] dark:bg-gray-600"
                   >
                     <option value="recent">Recent</option>
                     <option value="lighest">Highest rated</option>
@@ -148,7 +191,7 @@ const ProductScreen = () => {
                   <select
                     name="filter"
                     id="filter"
-                    className="w-32 outline-none rounded-sm"
+                    className="w-32 outline-none rounded-sm dark:bg-gray-600"
                   >
                     <option value="5">5 Star</option>
                     <option value="4">4 Star</option>
@@ -171,7 +214,6 @@ const ProductScreen = () => {
           </div>
         </div>
       </div>
-    
     </section>
   );
 };

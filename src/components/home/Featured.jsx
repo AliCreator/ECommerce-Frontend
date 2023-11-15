@@ -8,7 +8,7 @@ import { FEATURED_PRODUCTS } from "../../data";
 
 const Featured = () => {
   return (
-    <div className="bg-blue-50/25 h-full p-6">
+    <div className="bg-blue-50/25 dark:bg-slate-950 h-full p-6">
       <div className="flex flex-col items-center gap-16">
         <div className="flex flex-col items-center gap-6">
           <h2 className="text-3xl font-bold">Merry & Bright Days</h2>

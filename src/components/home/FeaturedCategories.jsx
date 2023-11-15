@@ -5,7 +5,7 @@ import FeaturedCatCard from "./FeaturedCatCard";
 
 const FeaturedCategories = () => {
   return (
-    <div className="bg-white text-black p-4 flex flex-col gap-4 items-center">
+    <div className="bg-white dark:bg-slate-950 dark:text-white text-black p-4 flex flex-col gap-4 items-center">
       <div className="flex flex-col items-center gap-2">
         <h2 className="text-4xl font-bold">Featured Categories</h2>
         <Link to="/">Shop all</Link>

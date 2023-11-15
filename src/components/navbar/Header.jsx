@@ -7,7 +7,7 @@ const Header = () => {
   
 
   return (
-    <header className="flex flex-col w-full shadow-md">
+    <header className="flex flex-col w-full shadow-md dark:bg-gray-950">
       <LocationInfo />
       <MenuBar />
     </header>

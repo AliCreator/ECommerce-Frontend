@@ -12,13 +12,12 @@ import {
 } from "react-icons/ai";
 import MenuItem from "./MenuItem";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SmallSizeCatCard from "./SmallSizeCatCard";
 import { useDispatch, useSelector } from "react-redux";
 import { setMenuOpen, setTheme } from "../../slices/preferenceSlice";
 import { FaMoon } from "react-icons/fa";
 import { LuSunMoon } from "react-icons/lu";
-
 
 const MENU_ITEMS = [
   {
@@ -47,14 +46,14 @@ const MenuBar = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [dropDownStyle, setDropDownStyle] = useState({});
 
-
   const [showMenu, setShowMenu] = useState(false);
   const searchRef = useRef(null);
   const dispatch = useDispatch();
-  const {isDark} = useSelector(state => state.preferences)
+  const navigate = useNavigate();
+  const { isDark } = useSelector((state) => state.preferences);
 
+  const { user } = useSelector((state) => state.auth);
 
-  
   const handleSearchClick = (e) => {
     if (searchRef.current) {
       const rect = searchRef.current.getBoundingClientRect();
@@ -67,8 +66,6 @@ const MenuBar = () => {
       setIsSearching(true);
     }
   };
-
-
 
   return (
     <section
@@ -195,10 +192,31 @@ const MenuBar = () => {
         </div>
 
         <div className="col-span-4 order-3 md:order-4 flex items-center justify-center gap-6">
-          <Link to="/login" className="flex items-center gap-2">
-            <AiOutlineUser className="text-2xl  hover:bg-gray-100 transition-all duration-500 hover:rounded-md" />
-            <span className="hidden">Sign in</span>
-          </Link>
+          <div className="flex items-center gap-0">
+            {!user && (
+              <Link to="/login">
+                <AiOutlineUser className=" text-2xl  hover:bg-gray-100 transition-all duration-500 hover:rounded-md" />
+              </Link>
+            )}
+            {user && user?.profilePicture ? (
+              <img
+                src={
+                  user?.profilePicture ||
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1200px-User_icon_2.svg.png"
+                }
+                alt={user?.firstName}
+                className="w-14 h-14 object-cover"
+                onClick={() => navigate("/profile")}
+              />
+            ) : (
+              <img
+                src="./images/hero.png"
+                alt={user?.firstName}
+                className="w-14 object-cover"
+                onClick={() => navigate("/profile")}
+              />
+            )}
+          </div>
           <Link
             to="/cart"
             className="relative  hover:bg-gray-100 transition-all duration-500 hover:rounded-md"
@@ -208,7 +226,12 @@ const MenuBar = () => {
               1
             </span>
           </Link>
-          <button className="px-3 py-2 bg-gray-100  rounded-md text-slate-950  hover:bg-gray-300 transition-all duration-500" onClick={() => dispatch(setTheme(!isDark))}>{isDark ? <LuSunMoon /> :<FaMoon />}</button>
+          <button
+            className="px-3 py-2 bg-gray-100  rounded-md text-slate-950  hover:bg-gray-300 transition-all duration-500"
+            onClick={() => dispatch(setTheme(!isDark))}
+          >
+            {isDark ? <LuSunMoon /> : <FaMoon />}
+          </button>
         </div>
         <div
           className="col-span-12  md:order-3 md:flex-grow flex items-center gap-4  px-2 bg-gray-100 dark:bg-gray-700 dark:text-white"

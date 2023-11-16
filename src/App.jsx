@@ -3,6 +3,8 @@ import Header from "./components/navbar/Header";
 import Footer from "./components/footer/Footer";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { menuOpen, isDark } = useSelector((state) => state.preferences);
@@ -26,6 +28,7 @@ function App() {
         <Outlet />
       </main>
       <Footer />
+      <ToastContainer />
     </section>
   );
 }
